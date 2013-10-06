@@ -10,17 +10,20 @@ class LittleElephantAndBallsSpec extends Specification {
     }
 
     @Unroll
-    def "test"() {
+    def "calculate the maximum points that can be scored"() {
         expect:
-        littleElephantAndBalls.getNumber(s) == result
+        littleElephantAndBalls.getNumber(S) == points
 
         where:
-        s         | result
-        "RGB"     | 3
-        "RGGRBBB" | 21
-        "RRRGBRR" | 16
-        "RRRR"    | 5
-        "GGRRRGR" | 18
-        "G"       | 0
+        S                                                    | points
+        "RGB"                                                | 3
+        "RGGRBBB"                                            | 21
+        "RRRGBRR"                                            | 16
+        "RRRR"                                               | 5
+        "GGRRRGR"                                            | 18
+        "G"                                                  | 0
+        "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" | 97
+        "RRRRRRRRRRRRRRRRRRRRRRRRRGGGGGGGGGGGGGGGGGGGGGGGGG" | 144
+        "RRRRRRRRRRRRRRRRGGGGGGGGGGGGGGGGBBBBBBBBBBBBBBBBBB" | 195
     }
 }
