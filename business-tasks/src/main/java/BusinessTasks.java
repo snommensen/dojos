@@ -2,7 +2,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * Problem statement: http://community.topcoder.com/stat?c=problem_statement&pm=1585&rd=6535
+ * Problem statement:
+ * http://community.topcoder.com/stat?c=problem_statement&pm=1585&rd=6535
  */
 public class BusinessTasks {
 

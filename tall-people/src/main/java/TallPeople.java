@@ -3,12 +3,16 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
- * Problem statement: http://community.topcoder.com/stat?c=problem_statement&pm=2923&rd=5854
+ * Problem statement:
+ * http://community.topcoder.com/stat?c=problem_statement&pm=2923&rd=5854
  */
 public class TallPeople {
 
     public int[] getPeople(String[] people) {
-        return new int[]{tallestOfTheShortest(people), shortestOfTheTallest(people)};
+        return new int[]{
+                tallestOfTheShortest(people),
+                shortestOfTheTallest(people)
+        };
     }
 
     int tallestOfTheShortest(String[] people) {

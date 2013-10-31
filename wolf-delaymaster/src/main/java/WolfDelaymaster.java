@@ -8,13 +8,13 @@ public class WolfDelaymaster {
     private static final String INVALID = "INVALID";
 
     public String check(String str) {
-        if (str.contains("fo") || str.contains("fl"))
-            return INVALID;
+        if (str.contains("fo") || str.contains("fl")) return INVALID;
 
         String s = str.replaceAll("fw", "f#w");
         String[] wolfs = s.split("#");
-        for (String wolf : wolfs)
+        for (String wolf : wolfs) {
             if (!hasValidOrder(wolf)) return INVALID;
+        }
 
         return VALID;
     }

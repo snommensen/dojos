@@ -1,7 +1,8 @@
 import java.util.*;
 
 /**
- * Problem statement: http://community.topcoder.com/stat?c=problem_statement&pm=12758&rd=15704
+ * Problem statement:
+ * http://community.topcoder.com/stat?c=problem_statement&pm=12758&rd=15704
  */
 public class LittleElephantAndBalls {
 
@@ -13,7 +14,8 @@ public class LittleElephantAndBalls {
             if (colors.isEmpty()) {
                 colors.add(c);
             } else {
-                Map.Entry<Integer, Integer> indexWithPoints = findMaxEntry(performBruteForceAnalysis(colors));
+                Map.Entry<Integer, Integer> indexWithPoints =
+                        findMaxEntry(performBruteForceAnalysis(colors));
                 points += indexWithPoints.getValue();
                 colors.add(indexWithPoints.getKey(), c);
             }
@@ -29,7 +31,9 @@ public class LittleElephantAndBalls {
             int points = 0;
             points += numberOfDifferentColors(currentList.subList(0, i + 1));
             if (i + 1 <= currentList.size() - 1) {
-                points += numberOfDifferentColors(currentList.subList(i + 1, currentList.size()));
+                points += numberOfDifferentColors(
+                        currentList.subList(i + 1, currentList.size())
+                );
             }
             indexToPointsMap.put(i + 1, points);
         }
@@ -37,7 +41,8 @@ public class LittleElephantAndBalls {
         return indexToPointsMap;
     }
 
-    Map.Entry<Integer, Integer> findMaxEntry(HashMap<Integer, Integer> indexToPointsMap) {
+    Map.Entry<Integer, Integer> findMaxEntry(
+            HashMap<Integer, Integer> indexToPointsMap) {
         Map.Entry<Integer, Integer> maxEntry = null;
 
         for (Map.Entry<Integer, Integer> entry : indexToPointsMap.entrySet()) {
