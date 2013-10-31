@@ -1,5 +1,4 @@
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class WolfDelaymasterSpec extends Specification {
 
@@ -12,12 +11,15 @@ class WolfDelaymasterSpec extends Specification {
         wolfDelaymaster = new WolfDelaymaster()
     }
 
-    def "return the tasks which the business man chooses to execute"() {
+    def "check whether the string is valid"() {
         expect:
         wolfDelaymaster.check(str) == result
 
         where:
-        str    | result
-        "wolf" | VALID
+        str                                        | result
+        "wolf"                                     | VALID
+        "wolfwwoollffwwwooolllfffwwwwoooollllffff" | VALID
+        "wwolfolf"                                 | INVALID
+        "flowolf"                                  | INVALID
     }
 }
