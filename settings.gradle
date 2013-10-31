@@ -1,1 +1,4 @@
-include 'business-tasks', 'tall-people', 'little-elephant'
+include 'business-tasks',
+        'tall-people',
+        'little-elephant',
+        'wolf-delaymaster'
