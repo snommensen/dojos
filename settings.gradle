@@ -1,4 +1,6 @@
 include 'business-tasks',
         'tall-people',
         'little-elephant',
-        'wolf-delaymaster'
+        'wolf-delaymaster',
+        'anagram'
+
