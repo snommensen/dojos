@@ -6,7 +6,7 @@ class AnagramSpec extends Specification {
     @Unroll
     def "explode given word listing all anagrams"() {
         expect:
-        Anagram.explode(S) - result == []
+        result - Anagram.explode(S) == []
 
         where:
         S      | result
@@ -16,5 +16,9 @@ class AnagramSpec extends Specification {
         "abc"  | ["abc", "acb", "bac", "bca", "cab", "cba"]
         "abbc" | ["abbc", "abcb", "acbb", "babc", "bbac", "bbca", "bcab",
                 "bcba", "bacb", "cabb", "cbab", "cbba"]
+        "abcd" | ["adcb", "abdc", "abcd", "acdb", "acbd",
+                "bdca", "badc","bacd", "bdac", "bcda", "bcad",
+                "cdba", "cadb", "cabd", "cdab", "cbad", "cbda",
+                "dcba", "dacb", "dabc", "dcab", "dbac"]
     }
 }
