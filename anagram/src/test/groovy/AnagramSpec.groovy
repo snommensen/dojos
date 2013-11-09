@@ -3,16 +3,10 @@ import spock.lang.Unroll
 
 class AnagramSpec extends Specification {
 
-    def anagram
-
-    def setup() {
-        anagram = new Anagram()
-    }
-
     @Unroll
     def "explode given word listing all anagrams"() {
         expect:
-        anagram.explode(S) - result == []
+        Anagram.explode(S) - result == []
 
         where:
         S      | result
