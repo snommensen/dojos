@@ -32,7 +32,7 @@ class Anagram {
             for (int j in 0..R.length() - 1)
                 result.add(prefix + swap(R, i, j))
 
-        return result
+        result
     }
 
     static swap(String S, int i, int j) {
