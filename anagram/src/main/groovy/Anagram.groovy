@@ -1,38 +1,22 @@
 class Anagram {
 
-    static explode(String S) {
-        if (S.length() == 0) return []
+    List result
 
-        final result = []
+    def explode(String S) {
+        result = []
+        explode(S, 0, S.length() - 1)
+        result
+    }
 
-        for (int k in 0..S.length() - 1) {
-            final prefix = S[k]
-            final R = without(S, k)
-            result.addAll(shuffle(R, prefix))
+    def explode(String S, int k, int n) {
+        if (k == n) result.add(S)
+        else {
+            for (int i in k..n) {
+                S = swap(S, i, k)
+                explode(S, k + 1, n)
+                S = swap(S, i, k)
+            }
         }
-
-        result
-    }
-
-    static without(String S, int k) {
-        final end = S.length() - 1
-
-        if (k == 0)
-            S[1..end]
-        else if (k == end)
-            S[0..end - 1]
-        else
-            S[0..k - 1] + S[k + 1..end]
-    }
-
-    static shuffle(String R, String prefix) {
-        final result = [] as Set
-
-        for (int i in R.length() - 1)
-            for (int j in 0..R.length() - 1)
-                result.add(prefix + swap(R, i, j))
-
-        result
     }
 
     static swap(String S, int i, int j) {
