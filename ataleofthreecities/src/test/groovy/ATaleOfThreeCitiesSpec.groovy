@@ -9,7 +9,7 @@ class ATaleOfThreeCitiesSpec extends Specification {
     def aTaleOfThreeCities
 
     def setup() {
-        aTaleOfThreeCities = ATaleOfThreeCities.make()
+        aTaleOfThreeCities = new ATaleOfThreeCities()
     }
 
     def "the correct minimal costs for two tunnels are calculated"() {

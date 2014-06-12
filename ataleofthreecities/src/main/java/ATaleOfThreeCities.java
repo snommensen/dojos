@@ -1,9 +1,5 @@
 public class ATaleOfThreeCities {
 
-    public static ATaleOfThreeCities make() {
-        return new ATaleOfThreeCities();
-    }
-
     public double connect(int[] ax, int[] ay,
                           int[] bx, int[] by,
                           int[] cx, int[] cy) {
@@ -34,6 +30,10 @@ public class ATaleOfThreeCities {
     }
 
     private double addedCostsOfTwoTunnels(double ab, double ac, double bc) {
-        return ab + ac + bc - Math.max(Math.max(ab, ac), bc);
+        return ab + ac + bc - mostExpensiveTunnelCosts(ab, ac, bc);
+    }
+
+    private double mostExpensiveTunnelCosts(double ab, double ac, double bc) {
+        return Math.max(Math.max(ab, ac), bc);
     }
 }
