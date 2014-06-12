@@ -7,35 +7,33 @@ public class ATaleOfThreeCities {
     public double connect(int[] ax, int[] ay,
                           int[] bx, int[] by,
                           int[] cx, int[] cy) {
+        double ab = minDistanceBetweenTwoCities(ax, ay, bx, by);
+        double ac = minDistanceBetweenTwoCities(ax, ay, cx, cy);
+        double bc = minDistanceBetweenTwoCities(bx, by, cx, cy);
 
-        double ab, ac, bc;
-        ab = ac = bc = Double.MAX_VALUE;
+        return addedCostsOfTwoTunnels(ab, ac, bc);
+    }
 
-        for (int i = 0; i < ax.length; i++) {
-            for (int j = 0; j < bx.length; j++) {
-                double d = euclideanDistance(ax[i], ay[i], bx[j], by[j]);
-                ab = Math.min(d, ab);
+    private double minDistanceBetweenTwoCities(int[] firstX, int[] firstY,
+                                               int[] secondX, int[] secondY) {
+        double result = Double.MAX_VALUE;
+        for (int i = 0; i < firstX.length; i++) {
+            for (int j = 0; j < secondX.length; j++) {
+                double distance = euclideanDistance(
+                        firstX[i], firstY[i],
+                        secondX[j], secondY[j]
+                );
+                result = Math.min(result, distance);
             }
         }
-
-        for (int i = 0; i < ax.length; i++) {
-            for (int j = 0; j < cx.length; j++) {
-                double d = euclideanDistance(ax[i], ay[i], cx[j], cy[j]);
-                ac = Math.min(d, ac);
-            }
-        }
-
-        for (int i = 0; i < bx.length; i++) {
-            for (int j = 0; j < cx.length; j++) {
-                double d = euclideanDistance(bx[i], by[i], cx[j], cy[j]);
-                bc = Math.min(bc, d);
-            }
-        }
-
-        return ab + ac + bc - Math.max(Math.max(ab, ac), bc);
+        return result;
     }
 
     private double euclideanDistance(int x1, int x2, int y1, int y2) {
         return Math.sqrt(Math.pow(x1 - y1, 2) + Math.pow(x2 - y2, 2));
+    }
+
+    private double addedCostsOfTwoTunnels(double ab, double ac, double bc) {
+        return ab + ac + bc - Math.max(Math.max(ab, ac), bc);
     }
 }
