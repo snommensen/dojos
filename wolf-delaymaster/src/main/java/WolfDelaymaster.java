@@ -8,15 +8,22 @@ public class WolfDelaymaster {
     private static final String INVALID = "INVALID";
 
     public String check(String str) {
-        if (str.contains("fo") || str.contains("fl")) return INVALID;
+        if (hasInvalidLetterCombinations(str)) return INVALID;
 
-        String s = str.replaceAll("fw", "f#w");
-        String[] wolfs = s.split("#");
-        for (String wolf : wolfs) {
+
+        for (String wolf : extractSingleWolfs(str))
             if (!hasValidOrder(wolf)) return INVALID;
-        }
 
         return VALID;
+    }
+
+    private boolean hasInvalidLetterCombinations(String str) {
+        return str.contains("fo") || str.contains("fl");
+    }
+
+    private String[] extractSingleWolfs(String str) {
+        String s = str.replaceAll("fw", "f#w");
+        return s.split("#");
     }
 
     private boolean hasValidOrder(String wolf) {
