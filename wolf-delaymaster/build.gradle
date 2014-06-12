@@ -1,7 +1,11 @@
 version = "0.0.1"
 
 dependencies {
-    testCompile "org.spockframework:spock-core:$spockVersion"
+    testCompile("org.spockframework:spock-core:$spockVersion") {
+        exclude group: 'org.codehaus.groovy', module: 'groovy'
+    }
+
+    testCompile "org.codehaus.groovy:groovy:$groovyVersion"
 
     compile "com.google.guava:guava:$guavaVersion"
 }
