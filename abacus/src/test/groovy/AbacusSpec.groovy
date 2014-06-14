@@ -78,7 +78,7 @@ class AbacusSpec extends Specification {
          "ooooo---oooo"] | 699984
     }
 
-    def "an abacus representation is correctly constructed from an interger"() {
+    def "an abacus representation is correctly constructed from an integer"() {
         expect:
         Abacus.toAbacus(number) == a
 
@@ -99,3 +99,4 @@ class AbacusSpec extends Specification {
     }
 
 }
+
