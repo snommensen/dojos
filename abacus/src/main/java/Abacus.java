@@ -21,18 +21,17 @@ public class Abacus {
         String[] abacus = new String[s.length()];
         for (int i = 0; i < s.length(); i++) {
             int n = Integer.parseInt("" + s.charAt(i));
-            int r = 9 - n;
-            abacus[i] = constructOneAbacusNumber(r, n);
+            abacus[i] = constructOneAbacusNumber(n);
         }
         return abacus;
     }
 
-    static String constructOneAbacusNumber(int r, int n) {
+    static String constructOneAbacusNumber(int n) {
         String number = "";
-        for (int j = 0; j < r; j++)
+        for (int i = 0; i < (9 - n); i++)
             number += "o";
         number += "---";
-        for (int j = 0; j < n; j++)
+        for (int i = 0; i < n; i++)
             number += "o";
         return number;
     }
