@@ -17,22 +17,24 @@ public class Abacus {
     }
 
     static String[] toAbacus(int number) {
-        String n = "" + number;
-        String[] abacus = new String[n.length()];
-        int k = 0;
-        for (char c : n.toCharArray()) {
-            int i = Integer.parseInt("" + c);
-            int r = 9 - i;
-            String s = "";
-            for (int j = 0; j < r; j++)
-                s += "o";
-            s += "---";
-            for (int j = 0; j < i; j++)
-                s += "o";
-            abacus[k] = s;
-            k++;
+        String s = "" + number;
+        String[] abacus = new String[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            int n = Integer.parseInt("" + s.charAt(i));
+            int r = 9 - n;
+            abacus[i] = constructOneAbacusNumber(r, n);
         }
         return abacus;
+    }
+
+    static String constructOneAbacusNumber(int r, int n) {
+        String number = "";
+        for (int j = 0; j < r; j++)
+            number += "o";
+        number += "---";
+        for (int j = 0; j < n; j++)
+            number += "o";
+        return number;
     }
 }
 
