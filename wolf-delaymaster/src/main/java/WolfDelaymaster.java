@@ -10,7 +10,6 @@ public class WolfDelaymaster {
     public String check(String str) {
         if (hasInvalidLetterCombinations(str)) return INVALID;
 
-
         for (String wolf : extractSingleWolfs(str))
             if (!hasValidOrder(wolf)) return INVALID;
 

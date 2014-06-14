@@ -3,5 +3,6 @@ include 'business-tasks',
         'little-elephant',
         'wolf-delaymaster',
         'anagram',
-        'ataleofthreecities'
+        'ataleofthreecities',
+        'abacus'
 
