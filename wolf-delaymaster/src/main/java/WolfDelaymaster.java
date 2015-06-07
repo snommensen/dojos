@@ -1,3 +1,8 @@
+import com.google.common.base.Predicates;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
+
 /**
  * Problem statement:
  * http://community.topcoder.com/stat?c=problem_statement&pm=12778
@@ -9,7 +14,8 @@ public class WolfDelaymaster {
 
     public String check(String str) {
         for (String wolf : extractSingleWolfs(str))
-            if (!hasValidOrder(wolf)) return INVALID;
+            if (!containsAllWolfLetters(wolf) || !hasValidOrder(wolf))
+                return INVALID;
 
         return VALID;
     }
@@ -19,24 +25,27 @@ public class WolfDelaymaster {
         return s.split("#");
     }
 
+    private boolean containsAllWolfLetters(String wolf) {
+        return !(wolf.indexOf('w') < 0 ||
+                wolf.indexOf('o') < 0 ||
+                wolf.indexOf('l') < 0 ||
+                wolf.indexOf('f') < 0);
+    }
+
     private boolean hasValidOrder(String wolf) {
         int wFirst = wolf.indexOf('w');
         int wLast = wolf.lastIndexOf('w');
-        if (wFirst < 0) return false;
 
         int oFirst = wolf.indexOf('o');
         int oLast = wolf.lastIndexOf('o');
-        if (oFirst < 0) return false;
 
         int lFirst = wolf.indexOf('l');
         int lLast = wolf.lastIndexOf('l');
-        if (lFirst < 0) return false;
 
         int f = wolf.indexOf('f');
-        if (f < 0) return false;
 
-        return (wFirst < oFirst && wLast < oFirst)
-                && (oFirst < lFirst && oLast < lFirst)
-                && (lFirst < f && lLast < f);
+        return (wFirst < oFirst && wLast < oFirst) &&
+                (oFirst < lFirst && oLast < lFirst) &&
+                (lFirst < f && lLast < f);
     }
 }
