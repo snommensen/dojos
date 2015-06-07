@@ -24,6 +24,7 @@ class WolfDelaymasterSpec extends Specification {
         "wwwwwwwwwwwwoooooooooooollllllllllllffffffffffff" | VALID
         "wwwwoooollllffffwwwwwwwooooooolllllllfffffff"     | VALID
         "wwwwwwwwwwoooooooooollllllllllffffffffff"         | VALID
+        "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
         "wwolfolf"                                         | INVALID
         "flowolf"                                          | INVALID
         "o"                                                | INVALID
