@@ -22,14 +22,18 @@ public class WolfDelaymaster {
     private boolean hasValidOrder(String wolf) {
         int wFirst = wolf.indexOf('w');
         int wLast = wolf.lastIndexOf('w');
+        if (wFirst < 0) return false;
 
         int oFirst = wolf.indexOf('o');
         int oLast = wolf.lastIndexOf('o');
+        if (oFirst < 0) return false;
 
         int lFirst = wolf.indexOf('l');
         int lLast = wolf.lastIndexOf('l');
+        if (lFirst < 0) return false;
 
         int f = wolf.indexOf('f');
+        if (f < 0) return false;
 
         return (wFirst < oFirst && wLast < oFirst)
                 && (oFirst < lFirst && oLast < lFirst)
