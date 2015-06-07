@@ -8,16 +8,10 @@ public class WolfDelaymaster {
     private static final String INVALID = "INVALID";
 
     public String check(String str) {
-        if (hasInvalidLetterCombinations(str)) return INVALID;
-
         for (String wolf : extractSingleWolfs(str))
             if (!hasValidOrder(wolf)) return INVALID;
 
         return VALID;
-    }
-
-    private boolean hasInvalidLetterCombinations(String str) {
-        return str.contains("fo") || str.contains("fl");
     }
 
     private String[] extractSingleWolfs(String str) {
@@ -26,11 +20,19 @@ public class WolfDelaymaster {
     }
 
     private boolean hasValidOrder(String wolf) {
-        int w = wolf.indexOf('w');
-        int o = wolf.indexOf('o');
-        int l = wolf.indexOf('l');
+        int wFirst = wolf.indexOf('w');
+        int wLast = wolf.lastIndexOf('w');
+
+        int oFirst = wolf.indexOf('o');
+        int oLast = wolf.lastIndexOf('o');
+
+        int lFirst = wolf.indexOf('l');
+        int lLast = wolf.lastIndexOf('l');
+
         int f = wolf.indexOf('f');
 
-        return w < o && o < l && l < f;
+        return (wFirst < oFirst && wLast < oFirst)
+                && (oFirst < lFirst && oLast < lFirst)
+                && (lFirst < f && lLast < f);
     }
 }
