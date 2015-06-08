@@ -12,7 +12,7 @@ class TallPeopleSpec extends Specification {
     @Unroll
     def "return the tallest-of-the-shortest and the shortest-of-the-tallest"() {
         expect:
-        tallPeople.getPeople(people as String[]) == result
+        tallPeople.getPeople(people as String[]) == result as int[]
 
         where:
         people                | result
