@@ -33,7 +33,6 @@ public class WolfDelaymaster {
     }
 
     private boolean hasValidOrder(String wolf) {
-        int wFirst = wolf.indexOf('w');
         int wLast = wolf.lastIndexOf('w');
 
         int oFirst = wolf.indexOf('o');
@@ -42,10 +41,10 @@ public class WolfDelaymaster {
         int lFirst = wolf.indexOf('l');
         int lLast = wolf.lastIndexOf('l');
 
-        int f = wolf.indexOf('f');
+        int fFirst = wolf.indexOf('f');
 
-        return (wFirst < oFirst && wLast < oFirst) &&
+        return (wLast < oFirst) &&
                 (oFirst < lFirst && oLast < lFirst) &&
-                (lFirst < f && lLast < f);
+                (lFirst < fFirst && lLast < fFirst);
     }
 }
