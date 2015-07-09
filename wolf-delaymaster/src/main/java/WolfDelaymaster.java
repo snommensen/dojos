@@ -14,7 +14,7 @@ public class WolfDelaymaster {
 
     public String check(String str) {
         for (String wolf : extractSingleWolfs(str))
-            if (!containsAllWolfLetters(wolf) || !hasValidOrder(wolf))
+            if (!containsAllWolfLetters(wolf) || !hasSameNumberAndValidOrder(wolf))
                 return INVALID;
 
         return VALID;
@@ -32,19 +32,29 @@ public class WolfDelaymaster {
                 wolf.indexOf('f') < 0);
     }
 
-    private boolean hasValidOrder(String wolf) {
-        int wLast = wolf.lastIndexOf('w');
+    private boolean hasSameNumberAndValidOrder(String wolf) {
+             int wFirst = wolf.indexOf('w');
+             int wLast = wolf.lastIndexOf('w');
+             int wDiff = wLast - wFirst;
 
-        int oFirst = wolf.indexOf('o');
-        int oLast = wolf.lastIndexOf('o');
+             int oFirst = wolf.indexOf('o');
+             int oLast = wolf.lastIndexOf('o');
+             int oDiff = oLast - oFirst;
 
-        int lFirst = wolf.indexOf('l');
-        int lLast = wolf.lastIndexOf('l');
+             int lFirst = wolf.indexOf('l');
+             int lLast = wolf.lastIndexOf('l');
+             int lDiff = lLast - lFirst;
 
-        int fFirst = wolf.indexOf('f');
+             int fFirst = wolf.indexOf('f');
+             int fLast = wolf.lastIndexOf('f');
+             int fDiff = fLast - fFirst;
+     
+             boolean sameNumber = wDiff == oDiff && oDiff == lDiff && lDiff == fDiff;
 
-        return (wLast < oFirst) &&
-                (oFirst < lFirst && oLast < lFirst) &&
-                (lFirst < fFirst && lLast < fFirst);
-    }
+             boolean validOrder = (wLast < oFirst) &&
+                     (oFirst < lFirst && oLast < lFirst) &&
+                     (lFirst < fFirst && lLast < fFirst);
+
+             return sameNumber && validOrder;
+         }
 }
