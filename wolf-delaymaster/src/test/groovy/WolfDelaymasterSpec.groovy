@@ -3,47 +3,47 @@ import spock.lang.Unroll
 
 class WolfDelaymasterSpec extends Specification {
 
-    static final VALID = "VALID"
-    static final INVALID = "INVALID"
+  static final VALID = "VALID"
+  static final INVALID = "INVALID"
 
-    WolfDelaymaster wolfDelaymaster
+  WolfDelaymaster wolfDelaymaster
 
-    def setup() {
-        wolfDelaymaster = new WolfDelaymaster()
-    }
+  def setup() {
+    wolfDelaymaster = new WolfDelaymaster()
+  }
 
-    @Unroll
-    def "check whether the string is valid"() {
-        expect:
-        wolfDelaymaster.check(str) == result
+  @Unroll
+  def "check whether the string is valid"() {
+    expect:
+    wolfDelaymaster.check(str) == result
 
-        where:
-        str                                                | result
-        "wolf"                                             | VALID
-        "wolfwwoollffwwwooolllfffwwwwoooollllffff"         | VALID
-        "wwwwwwwwwwwwoooooooooooollllllllllllffffffffffff" | VALID
-        "wwwwoooollllffffwwwwwwwooooooolllllllfffffff"     | VALID
-        "wwwwwwwwwwoooooooooollllllllllffffffffff"         | VALID
-        "wwwoolllfff"                                      | INVALID
-        "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
-        "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
-        "olfwolfwolfwolfwolfwolfwolfwolfwolfwolf"          | INVALID
-        "wwolfolf"                                         | INVALID
-        "flowolf"                                          | INVALID
-        "o"                                                | INVALID
-        "fo"                                               | INVALID
-        "lfw"                                              | INVALID
-        "lllwl"                                            | INVALID
-        "ofwff"                                            | INVALID
-        "fwwloo"                                           | INVALID
-        "llwolow"                                          | INVALID
-        "flffwwff"                                         | INVALID
-        "lllfoffff"                                        | INVALID
-        "ffwffwwoow"                                       | INVALID
-        "ffwffwwoow"                                       | INVALID
-        "wflolwfolwo"                                      | INVALID
-        "wlwwlfolflow"                                     | INVALID
-        "loofwwwfooolffwlwoowwwwwfoofwowwollffowoo"        | INVALID
-        "oofoolllowwlfllofwofwfololllflflfoollwwflo"       | INVALID
-    }
+    where:
+    str                                                | result
+    "wolf"                                             | VALID
+    "wolfwwoollffwwwooolllfffwwwwoooollllffff"         | VALID
+    "wwwwwwwwwwwwoooooooooooollllllllllllffffffffffff" | VALID
+    "wwwwoooollllffffwwwwwwwooooooolllllllfffffff"     | VALID
+    "wwwwwwwwwwoooooooooollllllllllffffffffff"         | VALID
+    "wwwoolllfff"                                      | INVALID
+    "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
+    "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
+    "olfwolfwolfwolfwolfwolfwolfwolfwolfwolf"          | INVALID
+    "wwolfolf"                                         | INVALID
+    "flowolf"                                          | INVALID
+    "o"                                                | INVALID
+    "fo"                                               | INVALID
+    "lfw"                                              | INVALID
+    "lllwl"                                            | INVALID
+    "ofwff"                                            | INVALID
+    "fwwloo"                                           | INVALID
+    "llwolow"                                          | INVALID
+    "flffwwff"                                         | INVALID
+    "lllfoffff"                                        | INVALID
+    "ffwffwwoow"                                       | INVALID
+    "ffwffwwoow"                                       | INVALID
+    "wflolwfolwo"                                      | INVALID
+    "wlwwlfolflow"                                     | INVALID
+    "loofwwwfooolffwlwoowwwwwfoofwowwollffowoo"        | INVALID
+    "oofoolllowwlfllofwofwfololllflflfoollwwflo"       | INVALID
+  }
 }
