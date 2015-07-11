@@ -27,10 +27,12 @@ public class WolfDelaymaster {
   private boolean hasSameNumber(String wolf) {
     List<Character> characters = new ArrayList<>(wolf.length());
     for (Character c : wolf.toCharArray()) characters.add(c);
+
     int wCount = Collections.frequency(characters, 'w');
     int oCount = Collections.frequency(characters, 'o');
     int lCount = Collections.frequency(characters, 'l');
     int fCount = Collections.frequency(characters, 'f');
+
     return wCount == oCount && oCount == lCount && lCount == fCount;
   }
 
