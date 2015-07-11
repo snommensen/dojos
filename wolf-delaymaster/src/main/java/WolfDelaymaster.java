@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Problem statement:
  * http://community.topcoder.com/stat?c=problem_statement&pm=12778
@@ -9,7 +13,7 @@ public class WolfDelaymaster {
 
   public String check(String str) {
     for (String wolf : extractSingleWolfs(str))
-      if (!containsAllWolfLetters(wolf) || !hasSameNumberAndValidOrder(wolf))
+      if (!hasSameNumber(wolf) || !hasValidOrder(wolf))
         return INVALID;
 
     return VALID;
@@ -20,36 +24,26 @@ public class WolfDelaymaster {
     return s.split("#");
   }
 
-  private boolean containsAllWolfLetters(String wolf) {
-    return !(wolf.indexOf('w') < 0 ||
-        wolf.indexOf('o') < 0 ||
-        wolf.indexOf('l') < 0 ||
-        wolf.indexOf('f') < 0);
+  private boolean hasSameNumber(String wolf) {
+    List<Character> characters = new ArrayList<>(wolf.length());
+    for (Character c : wolf.toCharArray()) characters.add(c);
+    int wCount = Collections.frequency(characters, 'w');
+    int oCount = Collections.frequency(characters, 'o');
+    int lCount = Collections.frequency(characters, 'l');
+    int fCount = Collections.frequency(characters, 'f');
+    return wCount == oCount && oCount == lCount && lCount == fCount;
   }
 
-  private boolean hasSameNumberAndValidOrder(String wolf) {
-    int wFirst = wolf.indexOf('w');
+  private boolean hasValidOrder(String wolf) {
     int wLast = wolf.lastIndexOf('w');
-    int wDiff = wLast - wFirst;
-
     int oFirst = wolf.indexOf('o');
     int oLast = wolf.lastIndexOf('o');
-    int oDiff = oLast - oFirst;
-
     int lFirst = wolf.indexOf('l');
     int lLast = wolf.lastIndexOf('l');
-    int lDiff = lLast - lFirst;
-
     int fFirst = wolf.indexOf('f');
-    int fLast = wolf.lastIndexOf('f');
-    int fDiff = fLast - fFirst;
 
-    boolean sameNumber = wDiff == oDiff && oDiff == lDiff && lDiff == fDiff;
-
-    boolean validOrder = (wLast < oFirst) &&
+    return (wLast < oFirst) &&
         (oFirst < lFirst && oLast < lFirst) &&
         (lFirst < fFirst && lLast < fFirst);
-
-    return sameNumber && validOrder;
   }
 }
