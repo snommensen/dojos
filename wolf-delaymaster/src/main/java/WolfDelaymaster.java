@@ -8,15 +8,12 @@ import java.util.List;
  */
 public class WolfDelaymaster {
 
-  private static final String VALID = "VALID";
-  private static final String INVALID = "INVALID";
-
   public String check(String str) {
     for (String wolf : extractSingleWolfs(str))
       if (!hasSameNumber(wolf) || !hasValidOrder(wolf))
-        return INVALID;
+        return "INVALID";
 
-    return VALID;
+    return "VALID";
   }
 
   private String[] extractSingleWolfs(String str) {
