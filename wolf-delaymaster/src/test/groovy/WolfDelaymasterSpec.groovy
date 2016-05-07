@@ -20,10 +20,12 @@ class WolfDelaymasterSpec extends Specification {
     where:
     str                                                | result
     "wolf"                                             | VALID
+    "wolfwolf"                                         | VALID
     "wolfwwoollffwwwooolllfffwwwwoooollllffff"         | VALID
     "wwwwwwwwwwwwoooooooooooollllllllllllffffffffffff" | VALID
     "wwwwoooollllffffwwwwwwwooooooolllllllfffffff"     | VALID
     "wwwwwwwwwwoooooooooollllllllllffffffffff"         | VALID
+    "wwwwwwwwwwoooooooooollllllllllffffffffffwolf"     | VALID
     "wwwoolllfff"                                      | INVALID
     "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
     "wolfwolfwolfwolfwolfwolfwolfwolfwolfwolfl"        | INVALID
