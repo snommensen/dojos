@@ -1,11 +1,5 @@
 public class Abacus {
 
-    public String[] add(String[] original, int val) {
-        int number = fromAbacus(original);
-        int sum = number + val;
-        return toAbacus(sum);
-    }
-
     static int fromAbacus(String[] abacus) {
         String number = "";
         for (String s : abacus) {
@@ -34,6 +28,12 @@ public class Abacus {
         for (int i = 0; i < n; i++)
             number += "o";
         return number;
+    }
+
+    public String[] add(String[] original, int val) {
+        int number = fromAbacus(original);
+        int sum = number + val;
+        return toAbacus(sum);
     }
 }
 

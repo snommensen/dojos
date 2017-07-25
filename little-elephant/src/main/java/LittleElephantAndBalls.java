@@ -15,7 +15,7 @@ public class LittleElephantAndBalls {
                 colors.add(c);
             } else {
                 Map.Entry<Integer, Integer> indexWithPoints =
-                        findMaxEntry(performBruteForceAnalysis(colors));
+                    findMaxEntry(performBruteForceAnalysis(colors));
                 points += indexWithPoints.getValue();
                 colors.add(indexWithPoints.getKey(), c);
             }
@@ -32,7 +32,7 @@ public class LittleElephantAndBalls {
             points += numberOfDifferentColors(currentList.subList(0, i + 1));
             if (i + 1 <= currentList.size() - 1) {
                 points += numberOfDifferentColors(
-                        currentList.subList(i + 1, currentList.size())
+                    currentList.subList(i + 1, currentList.size())
                 );
             }
             indexToPointsMap.put(i + 1, points);
@@ -42,7 +42,7 @@ public class LittleElephantAndBalls {
     }
 
     Map.Entry<Integer, Integer> findMaxEntry(
-            HashMap<Integer, Integer> indexToPointsMap) {
+        HashMap<Integer, Integer> indexToPointsMap) {
         Map.Entry<Integer, Integer> maxEntry = null;
 
         for (Map.Entry<Integer, Integer> entry : indexToPointsMap.entrySet()) {

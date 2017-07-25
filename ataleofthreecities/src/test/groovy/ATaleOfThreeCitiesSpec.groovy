@@ -15,9 +15,9 @@ class ATaleOfThreeCitiesSpec extends Specification {
     def "the correct minimal costs for two tunnels are calculated"() {
         expect:
         aTaleOfThreeCities.connect(
-                ax as int[], ay as int[],
-                bx as int[], by as int[],
-                cx as int[], cy as int[]) == result
+            ax as int[], ay as int[],
+            bx as int[], by as int[],
+            cx as int[], cy as int[]) == result
 
         where:
         ax                                | ay                                 | bx                                       | by                                       | cx                                       | cy                                        | result

@@ -20,10 +20,10 @@ class AnagramSpec extends Specification {
         "bit"  | ["bti", "bit", "itb", "ibt", "tib", "tbi"]
         "abc"  | ["abc", "acb", "bac", "bca", "cab", "cba"]
         "abbc" | ["abbc", "abcb", "acbb", "babc", "bbac", "bbca", "bcab",
-                "bcba", "bacb", "cabb", "cbab", "cbba"]
+                  "bcba", "bacb", "cabb", "cbab", "cbba"]
         "abcd" | ["adcb", "abdc", "abcd", "acdb", "acbd",
-                "bdca", "badc","bacd", "bdac", "bcda", "bcad",
-                "cdba", "cadb", "cabd", "cdab", "cbad", "cbda",
-                "dcba", "dacb", "dabc", "dcab", "dbac"]
+                  "bdca", "badc", "bacd", "bdac", "bcda", "bcad",
+                  "cdba", "cadb", "cabd", "cdab", "cbad", "cbda",
+                  "dcba", "dacb", "dabc", "dcab", "dbac"]
     }
 }

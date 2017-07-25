@@ -10,8 +10,8 @@ public class TallPeople {
 
     public int[] getPeople(String[] people) {
         return new int[]{
-                tallestOfTheShortest(people),
-                shortestOfTheTallest(people)
+            tallestOfTheShortest(people),
+            shortestOfTheTallest(people)
         };
     }
 
