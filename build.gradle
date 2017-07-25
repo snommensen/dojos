@@ -4,8 +4,8 @@ ext {
     guavaVersion = "19.0"
     junitVersion = "4.12"
     hamcrestVersion = "1.3"
-    groovyVersion = "2.4.9"
-    spockVersion = "1.1-groovy-2.4-rc-3"
+    groovyVersion = "2.4.11"
+    spockVersion = "1.1-groovy-2.4"
 }
 
 subprojects {
@@ -18,9 +18,10 @@ subprojects {
 
 	apply plugin: "java"
 	apply plugin: "groovy"
+	apply plugin: "idea"
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4.1'
+    gradleVersion = '4.0.1'
 }
 
