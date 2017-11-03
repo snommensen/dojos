@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Problem statement:
@@ -22,15 +21,17 @@ public class WolfDelaymaster {
     }
 
     private boolean hasSameNumber(String wolf) {
-        List<Character> characters = new ArrayList<>(wolf.length());
-        for (Character c : wolf.toCharArray()) characters.add(c);
+        String s = wolf
+            .replaceAll("wo", "w#o")
+            .replaceAll("ol", "o#l")
+            .replaceAll("lf", "l#f");
 
-        int wCount = Collections.frequency(characters, 'w');
-        int oCount = Collections.frequency(characters, 'o');
-        int lCount = Collections.frequency(characters, 'l');
-        int fCount = Collections.frequency(characters, 'f');
+        String[] split = s.split("#");
 
-        return wCount == oCount && oCount == lCount && lCount == fCount;
+        return split.length == 4 && Stream.of(split)
+            .mapToInt(String::length)
+            .distinct()
+            .count() == 1;
     }
 
     private boolean hasValidOrder(String wolf) {
