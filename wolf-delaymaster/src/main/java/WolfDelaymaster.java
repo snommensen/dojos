@@ -1,4 +1,3 @@
-import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -9,7 +8,7 @@ public class WolfDelaymaster {
 
     public String check(String str) {
         for (String wolf : extractSingleWolfs(str))
-            if (!hasSameNumber(wolf) || !hasValidOrder(wolf))
+            if (!isValid(wolf))
                 return "INVALID";
 
         return "VALID";
@@ -20,7 +19,7 @@ public class WolfDelaymaster {
         return s.split("#");
     }
 
-    private boolean hasSameNumber(String wolf) {
+    private boolean isValid(String wolf) {
         String s = wolf
             .replaceAll("wo", "w#o")
             .replaceAll("ol", "o#l")
@@ -32,18 +31,5 @@ public class WolfDelaymaster {
             .mapToInt(String::length)
             .distinct()
             .count() == 1;
-    }
-
-    private boolean hasValidOrder(String wolf) {
-        int wLast = wolf.lastIndexOf('w');
-        int oFirst = wolf.indexOf('o');
-        int oLast = wolf.lastIndexOf('o');
-        int lFirst = wolf.indexOf('l');
-        int lLast = wolf.lastIndexOf('l');
-        int fFirst = wolf.indexOf('f');
-
-        return (wLast < oFirst) &&
-            (oFirst < lFirst && oLast < lFirst) &&
-            (lFirst < fFirst && lLast < fFirst);
     }
 }
