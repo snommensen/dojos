@@ -47,5 +47,6 @@ class WolfDelaymasterSpec extends Specification {
         "wlwwlfolflow"                                     | INVALID
         "loofwwwfooolffwlwoowwwwwfoofwowwollffowoo"        | INVALID
         "oofoolllowwlfllofwofwfololllflflfoollwwflo"       | INVALID
+        "wwooloff"                                         | INVALID
     }
 }
