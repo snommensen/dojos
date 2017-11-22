@@ -1,7 +1,5 @@
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Problem statement:
@@ -18,21 +16,27 @@ public class TallPeople {
     }
 
     private int tallestOfTheShortest(IntStream[] rows) {
-        HashSet<Integer> shortestPerRow = new HashSet<>();
+        IntStream.Builder builder = IntStream.builder();
         Arrays.stream(rows)
             .forEach(row -> row
                 .min()
-                .ifPresent(shortestPerRow::add));
-        return Collections.max(shortestPerRow);
+                .ifPresent(builder));
+        IntStream shortestPerRow = builder.build();
+        return shortestPerRow
+            .max()
+            .orElseThrow(RuntimeException::new);
     }
 
     private int shortestOfTheTallest(IntStream[] cols) {
-        HashSet<Integer> tallestPerColumn = new HashSet<>();
+        IntStream.Builder builder = IntStream.builder();
         Arrays.stream(cols)
             .forEach(col -> col
                 .max()
-                .ifPresent(tallestPerColumn::add));
-        return Collections.min(tallestPerColumn);
+                .ifPresent(builder));
+        IntStream tallestPerColumn = builder.build();
+        return tallestPerColumn
+            .min()
+            .orElseThrow(RuntimeException::new);
     }
 
     private RowsAndCols parse(String[] people) {
@@ -41,18 +45,12 @@ public class TallPeople {
 
         int[][] rows = new int[noOfRows][noOfCols];
         IntStream.range(0, noOfRows)
-            .forEach(i -> {
-                rows[i] = parseRow(people[i]).toArray();
-            });
+            .forEach(i -> rows[i] = parseRow(people[i]).toArray());
 
         int[][] cols = new int[noOfCols][noOfRows];
         IntStream.range(0, noOfCols)
-            .forEach(j -> {
-                IntStream.range(0, noOfRows)
-                    .forEach(k -> {
-                        cols[j][k] = rows[k][j];
-                    });
-            });
+            .forEach(j -> IntStream.range(0, noOfRows)
+                .forEach(k -> cols[j][k] = rows[k][j]));
 
         return new RowsAndCols(rows, cols);
     }
