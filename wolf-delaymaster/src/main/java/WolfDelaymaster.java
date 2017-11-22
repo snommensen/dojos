@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
@@ -7,16 +9,13 @@ import java.util.stream.Stream;
 public class WolfDelaymaster {
 
     public String check(String str) {
-        for (String wolf : extractSingleWolfs(str))
-            if (!isValid(wolf))
-                return "INVALID";
-
-        return "VALID";
+        if (extractSingleWolfs(str).anyMatch(s -> !isValid(s))) return "INVALID";
+        else return "VALID";
     }
 
-    private String[] extractSingleWolfs(String str) {
+    private Stream<String> extractSingleWolfs(String str) {
         String s = str.replaceAll("fw", "f#w");
-        return s.split("#");
+        return Arrays.stream(s.split("#"));
     }
 
     private boolean isValid(String wolf) {
@@ -27,7 +26,7 @@ public class WolfDelaymaster {
 
         String[] split = s.split("#");
 
-        return split.length == 4 && Stream.of(split)
+        return split.length == "wolf".length() && Stream.of(split)
             .mapToInt(String::length)
             .distinct()
             .count() == 1;
