@@ -1,13 +1,13 @@
 public class Abacus {
 
     static int fromAbacus(String[] abacus) {
-        String number = "";
+        StringBuilder number = new StringBuilder();
         for (String s : abacus) {
             int idx = s.lastIndexOf('-');
             String n = s.substring(idx + 1);
-            number += n.length();
+            number.append(n.length());
         }
-        return Integer.parseInt(number);
+        return Integer.parseInt(number.toString());
     }
 
     static String[] toAbacus(int number) {
@@ -21,13 +21,13 @@ public class Abacus {
     }
 
     static String constructOneAbacusNumber(int n) {
-        String number = "";
+        StringBuilder number = new StringBuilder();
         for (int i = 0; i < (9 - n); i++)
-            number += "o";
-        number += "---";
+            number.append("o");
+        number.append("---");
         for (int i = 0; i < n; i++)
-            number += "o";
-        return number;
+            number.append("o");
+        return number.toString();
     }
 
     public String[] add(String[] original, int val) {
