@@ -4,5 +4,6 @@ include 'business-tasks',
         'wolf-delaymaster',
         'anagram',
         'ataleofthreecities',
-        'abacus'
+        'abacus',
+        'ellys-chocolates'
 
