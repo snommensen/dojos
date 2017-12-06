@@ -11,7 +11,7 @@ class EllysChocolatesTest {
     val ellysChocolates = EllysChocolates()
 
     @Test
-    fun `Elly has 15 euros, one is sold for 1, 3 can be exchanged for a new one, she can get 15`() {
+    fun `Elly has 15 euros, one is sold for 1, 3 can be exchanged for a new one, she can get 22`() {
         assertEquals(22, ellysChocolates.getCount(1, 3, 15))
     }
 
