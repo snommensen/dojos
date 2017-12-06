@@ -23,8 +23,8 @@ class EllysChocolates {
 
     private fun canExchange(chocolates: Int, K: Int): Boolean = chocolates % K == 0
 
-    private fun buy(amountOfMoney: Int, price: Int, chocolates: Int): Pair<Int, Int> {
-        return Pair(amountOfMoney - price, chocolates + 1)
+    private fun buy(amountOfMoney: Int, P: Int, chocolates: Int): Pair<Int, Int> {
+        return Pair(amountOfMoney - P, chocolates + 1)
     }
 
     private fun exchange(chocolates: Int): Int {
