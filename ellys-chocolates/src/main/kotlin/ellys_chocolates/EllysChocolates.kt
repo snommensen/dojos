@@ -5,7 +5,7 @@ class EllysChocolates {
     fun getCount(P: Int, K: Int, N: Int): Int {
         var chocolates = 0
         var amountOfMoney = N
-        var exchanges = 1
+        var exchanges = 0
 
         while (canBuy(amountOfMoney, P)) {
             val buyResult = buy(amountOfMoney, P, chocolates)
