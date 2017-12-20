@@ -19,15 +19,11 @@ class EllysChocolates {
         return chocolates
     }
 
-    private fun canBuy(amountOfMoney: Int, P: Int): Boolean = amountOfMoney >= P
+    fun canBuy(amountOfMoney: Int, P: Int) = amountOfMoney >= P
 
-    private fun canExchange(chocolates: Int, K: Int): Boolean = chocolates % K == 0
+    fun canExchange(chocolates: Int, K: Int) = chocolates % K == 0
 
-    private fun buy(amountOfMoney: Int, P: Int, chocolates: Int): Pair<Int, Int> {
-        return Pair(amountOfMoney - P, chocolates + 1)
-    }
+    fun buy(amountOfMoney: Int, P: Int, chocolates: Int) = Pair(amountOfMoney - P, chocolates + 1)
 
-    private fun exchange(chocolates: Int): Int {
-        return chocolates + 1
-    }
+    fun exchange(chocolates: Int) = chocolates + 1
 }
