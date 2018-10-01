@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Problem statement:
@@ -14,7 +15,7 @@ public class LittleElephantAndBalls {
             if (colors.isEmpty()) {
                 colors.add(c);
             } else {
-                Map.Entry<Integer, Integer> indexWithPoints =
+                Map.Entry<Integer, Long> indexWithPoints =
                     findMaxEntry(performBruteForceAnalysis(colors));
                 points += indexWithPoints.getValue();
                 colors.add(indexWithPoints.getKey(), c);
@@ -24,11 +25,11 @@ public class LittleElephantAndBalls {
         return points;
     }
 
-    HashMap<Integer, Integer> performBruteForceAnalysis(List<Character> currentList) {
-        HashMap<Integer, Integer> indexToPointsMap = new HashMap<>();
+    HashMap<Integer, Long> performBruteForceAnalysis(List<Character> currentList) {
+        HashMap<Integer, Long> indexToPointsMap = new HashMap<>();
 
         for (int i = 0; i < currentList.size(); i++) {
-            int points = 0;
+            long points = 0;
             points += numberOfDifferentColors(currentList.subList(0, i + 1));
             if (i + 1 <= currentList.size() - 1) {
                 points += numberOfDifferentColors(
@@ -41,28 +42,17 @@ public class LittleElephantAndBalls {
         return indexToPointsMap;
     }
 
-    Map.Entry<Integer, Integer> findMaxEntry(
-        HashMap<Integer, Integer> indexToPointsMap) {
-        Map.Entry<Integer, Integer> maxEntry = null;
-
-        for (Map.Entry<Integer, Integer> entry : indexToPointsMap.entrySet()) {
-            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
-                maxEntry = entry;
-            }
-        }
-
-        return maxEntry;
+    Map.Entry<Integer, Long> findMaxEntry(
+        HashMap<Integer, Long> indexToPointsMap) {
+        return indexToPointsMap.entrySet().stream()
+            .max(Comparator.comparingLong(Map.Entry::getValue))
+            .orElseThrow(RuntimeException::new);
     }
 
-    int numberOfDifferentColors(List<Character> colorList) {
-        if (colorList.size() <= 1) {
-            return colorList.size();
-        }
-
-        HashSet<Character> colorSet = new HashSet<>();
-        colorSet.addAll(colorList);
-
-        return colorSet.size();
+    long numberOfDifferentColors(List<Character> colorList) {
+        return colorList.stream()
+            .distinct()
+            .count();
     }
 }
 
